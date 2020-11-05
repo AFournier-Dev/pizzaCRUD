@@ -1,6 +1,5 @@
-<?php require_once 'header.php'; ?>
+<?php require_once 'functions.php'; 
 
-<?php
  if (!empty($_POST)) {
     $errors = array();
     require_once 'db.php';
@@ -35,16 +34,20 @@ POSSIBILITE EN REGEX :
         $errors['password'] = "Vous n'avez pas rempli votre mot de passe";
     }
     if(empty($errors)){
-        $req=$pdo->prepare("INSERT INTO users SET username = ?, password = ?, email = ?");
+        $req=$pdo->prepare("INSERT INTO users SET username = ?, password = ?, email = ?, confirmation_token = ?");
         $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
-        $req->execute([$_POST['username'], $password /* $_POST['password'] MAUVAISE PRATIQUE DE CYBER SECURITE */ , $_POST['email']]);
-        die('Votre compte a bien été créé');
+        $token = str_random(60);
+        $req->execute([$_POST['username'], $password /* $_POST['password'] MAUVAISE PRATIQUE DE CYBER SECURITE */ , $_POST['email'], $token]);
+        $user_id = $pdo->lastInsertId();
+        mail($_POST['email'], 'Valider votre compte', "Afin de valider votre compte pmerci de cliquer sur ce lien\n\nhttp://localhost/pizzaCRUD/confirm.php?id=$user_id&token=$token");
+        header('Location: login.php');
+        exit();
     }
  } 
     
 
  ?>
-
+<?php require_once 'header.php'; ?>
 
 <h1>S'inscrire</h1>
 
