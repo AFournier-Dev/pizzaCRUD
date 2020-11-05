@@ -3,12 +3,28 @@
 <?php
  if (!empty($_POST)) {
     $errors = array();
+    require_once 'db.php';
     if(empty($_POST['username']) || !preg_match('/^[a-zA-Z0-9_]+$/', $_POST['username'])){
         $errors['username'] = "Vous n'avez pas créer de pseudo ou il n'est pas valide";
+    } else {
+        $req = $pdo->prepare('SELECT id FROM users WHERE username = ?');
+        $req->execute([$_POST['username']]);
+        $user = $req->fetch();
+        if($user){
+            $errors['username'] = 'Ce pseudo existe déjà';
+        }
     }
+
     
     if(empty($_POST['email']) || !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)){ 
-        $errors['email'] = "Vous n'avez pas donner d'email ou il n'est pas valide";
+        $errors['email'] = "Vous n'avez pas donner d'email ou il n'est pas valide";}
+        else {
+            $req = $pdo->prepare('SELECT id FROM users WHERE username = ?');
+            $req->execute([$_POST['username']]);
+            $user = $req->fetch();
+            if($user){
+                $errors['email'] = 'Cet email est déjà utilisé';
+            }
     }
     /*
 A LA PLACE DE LA METHODE filter_var de PHP avec FILTER_VALIDATE_EMAIL
@@ -18,13 +34,30 @@ POSSIBILITE EN REGEX :
     if(empty($_POST['password']) || $_POST['password'] != $_POST['password_confirm']){
         $errors['password'] = "Vous n'avez pas rempli votre mot de passe";
     }
-    debug($errors);
+    if(empty($errors)){
+        $req=$pdo->prepare("INSERT INTO users SET username = ?, password = ?, email = ?");
+        $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+        $req->execute([$_POST['username'], $password /* $_POST['password'] MAUVAISE PRATIQUE DE CYBER SECURITE */ , $_POST['email']]);
+        die('Votre compte a bien été créé');
+    }
  } 
     
+
  ?>
 
 
 <h1>S'inscrire</h1>
+
+<?php if(!empty($errors)): ?>
+<div class="alert alert-danger">
+    <p>Le formulaire d'inscription n'est pas validé</p>
+    <ul>
+        <?php foreach($errors as $error): ?>
+        <li><?= $error; ?> </li>
+        <?php endforeach ?>
+    </ul>
+</div>
+<?php endif ?>
 
 <form action="" method="POST">
 <div>
@@ -48,4 +81,4 @@ POSSIBILITE EN REGEX :
 </form>
 
 
-<?php require_once 'footer.php';
+<?php require_once 'footer.php'; ?>
