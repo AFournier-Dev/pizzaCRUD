@@ -17,6 +17,7 @@ if (session_status() == PHP_SESSION_NONE){
     <link rel="canonical" href="https://getbootstrap.com/docs/3.4/examples/starter-template/">
 
     <title>Pizza par vous</title>
+    
 
     
     <link href="assets/css/app.css" rel="stylesheet">
@@ -54,6 +55,8 @@ if (session_status() == PHP_SESSION_NONE){
          -->  
           </ul>
         </div><!--/.nav-collapse -->
+      <!--  <h1>La pizzeria qui vous propose de challenger vos idées de pizza</h1>
+    <p></p> -->
       </div>
     </nav>
 
