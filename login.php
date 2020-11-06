@@ -35,7 +35,7 @@ require_once 'functions.php';
 require_once 'header.php';
 ?>
 
-<h1>Se connecter</h1>
+<h2>Se connecter</h2>
 
 
 <form action="" method="POST">

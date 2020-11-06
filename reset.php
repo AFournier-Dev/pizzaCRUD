@@ -37,7 +37,7 @@ require_once 'functions.php';
 require_once 'header.php';
 ?>
 
-<h1>Réinitialisation de votre mot de passe</h1>
+<h2>Réinitialisation de votre mot de passe</h2>
 
 
 <form action="" method="POST">
