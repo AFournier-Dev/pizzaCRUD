@@ -2,7 +2,7 @@
 require_once 'functions.php';
 logged_only();
 if(!empty($_POST)){
-    if($_POST['password'] != $_POST['password_confirm']){
+    if(!empty($_POST['password']) || $_POST['password'] != $_POST['password_confirm']){
         $_SESSION['flash']['danger'] = "Les mots de passes sont différents";
     }
     else{

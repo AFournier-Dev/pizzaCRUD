@@ -29,13 +29,13 @@ require_once 'header.php';
 
 
 <form action="" method="POST">
-<div>
+<div class="form-group">
     <label for="">Pseudo ou email</label>
     <input type="text" name="username" class="form-control" ><!-- required> -->
 </div>
 
-<div>
-    <label for="">Mot de passe</label>
+<div class="form-group">
+    <label for="">Mot de passe <a href="forget.php">(Mot de passe oublié)</a></label>
     <input type="text" name="password" class="form-control" ><!-- required> ++++ type="password" -->
 </div>
 
