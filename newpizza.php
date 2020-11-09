@@ -15,8 +15,6 @@ if(!empty($_POST)){
         var_dump($req);
         $req->execute([$_POST['pizza_name'], $_SESSION['auth']->id, $_POST['ingredient']]);
     }
-    
-    var_dump($errors);
 }
 
 
@@ -26,12 +24,12 @@ if(!empty($_POST)){
 <form action="" method="POST">
     <div class="form-group">
         <label for="">Nom de votre Pizza</label>
-        <input type="text" name="pizza_name" class="form-control" placeholder="Uniquement des caractères alphabétiques non accentués et espaces"><!-- required> -->
+        <input type="text" name="pizza_name" class="form-control" placeholder="Uniquement des caractères alphabétiques non accentués et espaces" required>
     </div>
 
     <div class="form-group">
         <label for="">Ingredients </label>
-        <input type="text" name="ingredient" class="form-control"><!-- required> ++++ type="password" -->
+        <input type="text" name="ingredient" class="form-control" required>
     </div>
 
     <button type="submit" class="btn btn-primary">Proposer votre pizza</button>

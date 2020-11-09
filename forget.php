@@ -9,8 +9,15 @@ if(!empty($_POST) && !empty($_POST['email'])){
     if($user){
         $reset_token = str_random(60);
         $pdo->prepare('UPDATE users SET reset_token = ?, reset_at = NOW() WHERE id =?')->execute([$reset_token, $user->id]);
-        $_SESSION['flash']['succes'] = "Les instructions du changement du mot de passe sont dans la boîte mail que vous avez renseigné";
+        $_SESSION['flash']['succes'] = "Les instructions de changement du mot de passe sont dans la boîte mail que vous avez renseigné";
         mail($_POST['email'], 'Réinitialisation de votre compte', "Afin de valider votre compte pmerci de cliquer sur ce lien\n\nhttp://localhost/pizzaCRUD/reset.php?id={$user->id}&token=$reset_token");
+
+
+        /*
+        $mail = mail('alexandre.fournier@yahoo.fr', 'Instruction de changement de mot de passe', 'Afin de valider votre compte merci de cliquer sur ce lien\n\nhttp://localhost/pizzaCRUD/reset.php?id={$user->id}&token=$reset_token', 'alexandre.fournier@yahoo.fr');
+
+*/
+     
         header('Location: login.php');
         exit();
     }

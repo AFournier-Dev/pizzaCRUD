@@ -26,6 +26,4 @@ require_once 'header.php';
     </div>
     <button class="btn btn-primary">Confirmer le nouveau mot de passe</button>
 </form>
-
-<?php debug($_SESSION); ?>
 <?php require_once 'footer.php'; ?>

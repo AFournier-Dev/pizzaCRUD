@@ -26,7 +26,7 @@ if (!empty($_POST) && !empty($_POST['username']) && !empty($_POST['password'])) 
     } else {
         $_SESSION['flash']['danger'] = "Couple identifiant/mot de passe non valide";
     }
-    debug($user->password);
+    
 }
 ?>
 
@@ -57,7 +57,6 @@ require_once 'header.php';
 
     <button type="submit" class="btn btn-primary">Se connecter</button>
 </form>
-
 
 <?php debug($_SESSION); ?>
 <?php require_once 'footer.php'; ?>
