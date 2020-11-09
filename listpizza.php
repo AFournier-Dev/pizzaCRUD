@@ -12,20 +12,23 @@ $result = $req->fetchAll();
 var_dump($result);
 
 foreach ($result as $value) {?>
-    <h3> Nom de votre pizza : <?php echo $value->pizza_name ?></h3>
+    <h4> Nom de votre pizza : <?php echo $value->pizza_name ?></h4>
     <p>Liste de vos ingrédient : <?php echo $value->ingredient ?></p>
-    <a href="adjustpizza.php?id=<?=$value->id?>">Modifier cette recette</a>
+    
+    <a href="adjustpizza.php?id=<?=$value->id?>"><button type="submit" class="btn btn-primary pull-right">Modifier cette recette </button></a><br><br>
 <?php
 }
 
 ?>
-
-
+<!--
+    
 
 
 <form action="" method="POST">
 
     <button type="submit" class="btn btn-primary" name="seeallpizza">Revoir vos Pizzas proposées</button>
 </form>
+-->
+
 
 <?php require_once 'footer.php'; ?>

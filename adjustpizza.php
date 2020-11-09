@@ -15,23 +15,33 @@ echo('Vous ne pouvez pas modifier cette pizza');
 else{
     ?>
    <form action="" method="POST">
-    <div class="form-group">
-        <label for="">Nom de votre Pizza</label>
-        <input type="text" name="pizza_name" class="form-control" placeholder="Uniquement des caractères alphabétiques non accentués et espaces" value="<?php echo $result->pizza_name ?>" required>
-    </div>
+        <div class="form-group">
+            <label for="">Nom de votre Pizza</label>
+            <input type="text" name="pizza_name" class="form-control" placeholder="Uniquement des caractères alphabétiques non accentués et espaces" value="<?php echo $result->pizza_name ?>" required>
+        </div>
+        <div class="form-group">
+            <label for="">Ingredients </label>
+            <input type="text" name="ingredient" class="form-control" value="<?php echo $result->ingredient ?>" required>
+        </div>
+        <div><input type="hidden" name="data" value="<?php echo $result->id ?>">
+        </div>
+        <button type="submit" class="btn btn-primary" name="updatepizza">Modifier votre pizza</button>
+    </form>
 
-    <div class="form-group">
-        <label for="">Ingredients </label>
-        <input type="text" name="ingredient" class="form-control" value="<?php echo $result->ingredient ?>" required>
-    </div>
-    <div><input type="hidden" name="data" value="<?php echo $result->id ?>">
-    </div>
-
-    <button type="submit" class="btn btn-primary">Modifier votre pizza</button>
-</form>
-
-<?php
+    <?php
+    var_dump($result->id);
+    if($result->pizza_inventor != intval($result->id)) {
+        echo('Vous ne pouvez pas modifier cette pizza');
+    }
+    else{
+$req = $pdo->prepare("UPDATE pizza_list SET pizza_name = ?, ingredient = ?, WHERE pizza_inventor= $_POST'data' ");
+$req->execute([$_POST['pizza_name'], $_POST['ingredient']]);
+    }
+    
 }
+
+
+
 var_dump($result);
 ?>
 
