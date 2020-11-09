@@ -9,7 +9,6 @@ $req = $pdo->prepare("SELECT pizza_name, ingredient, id FROM pizza_list WHERE pi
 $req->execute([':user_id' => $user_id]);
 $result = $req->fetchAll();
 
-var_dump($result);
 
 foreach ($result as $value) {?>
     <h4> Nom de votre pizza : <?php echo $value->pizza_name ?></h4>
@@ -18,17 +17,8 @@ foreach ($result as $value) {?>
     <a href="adjustpizza.php?id=<?=$value->id?>"><button type="submit" class="btn btn-primary pull-right">Modifier cette recette </button></a><br><br>
 <?php
 }
-
+var_dump($_GET);
+var_dump($_POST);
 ?>
-<!--
-    
-
-
-<form action="" method="POST">
-
-    <button type="submit" class="btn btn-primary" name="seeallpizza">Revoir vos Pizzas proposées</button>
-</form>
--->
-
 
 <?php require_once 'footer.php'; ?>

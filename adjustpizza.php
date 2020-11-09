@@ -3,6 +3,8 @@ require_once 'header.php';
 require_once 'db.php';
 require_once 'functions.php';
 logged_only();
+var_dump($_GET);
+var_dump($_POST);
 
 if (!empty($_POST)) {
     $req = $pdo->prepare("UPDATE pizza_list SET pizza_name = ?, ingredient = ? WHERE id= ? ");
@@ -16,6 +18,7 @@ $result = $req->fetch();
 
 if ($result->pizza_inventor != $_SESSION['auth']->id) {
     echo ('Vous ne pouvez pas modifier cette pizza');
+    // require location
 } else {
 ?>
     <form action="" method="POST">
@@ -35,6 +38,9 @@ if ($result->pizza_inventor != $_SESSION['auth']->id) {
 <?php
     
 }
+
+var_dump($_GET);
+var_dump($_POST);
 ?>
 
 <?php require_once 'footer.php'; ?>

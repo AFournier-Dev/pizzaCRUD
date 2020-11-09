@@ -2,7 +2,6 @@
 if (session_status() == PHP_SESSION_NONE) {
   session_start();
 }
-var_dump($_SESSION);
 ?>
 
 <!doctype html>
@@ -49,7 +48,7 @@ var_dump($_SESSION);
           <?php endif; ?>
           <li><a href="newpizza.php">Proposer une nouvelle recette</a></li>
           <li><a href="listpizza.php">Voir vos recettes</a></li>
-          <li><a href="adjustpizza.php">Modifier une de vos recette</a></li>
+        <!--  <li><a href="adjustpizza.php">Modifier une de vos recette</a></li> -->
           <li><a href="deletepizza.php">Supprimer une de vos recettes</a></li>
 
           <!--
