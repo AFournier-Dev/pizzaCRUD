@@ -1,30 +1,26 @@
-<?php 
+<?php
 require_once 'db.php';
 require_once 'header.php'; ?>
 
 <?php
 
-if(!empty($_POST)){
-    $errors = array();
-    
-    if(empty($_POST['seeallpizza'])){
+$user_id = intval($_SESSION['auth']->id);
+$req = $pdo->prepare("SELECT pizza_name, ingredient, id FROM pizza_list WHERE pizza_inventor = :user_id");
+$req->execute([':user_id' => $user_id]);
+$result = $req->fetchAll();
 
-        // SI id de user n'a pas proposer de pizza alors alert 
+var_dump($result);
 
-        
-$req = $pdo->prepare(('SELECT '))
-
-        //$errors['pizza_name'] = "Vous n'avez pas encore proposé de pizza";
-    }
-    
-    else{        
-        $req = $pdo->prepare(('INSERT INTO  pizza_list (pizza_name, pizza_inventor, ingredient) VALUES (?, ?, ?)'));
-        var_dump($req);
-        $req->execute([$_POST['pizza_name'], $_SESSION['auth']->id, $_POST['ingredient']]);
-    }
+foreach ($result as $value) {?>
+    <h3> Nom de votre pizza : <?php echo $value->pizza_name ?></h3>
+    <p>Liste de vos ingrédient : <?php echo $value->ingredient ?></p>
+    <a href="adjustpizza.php?id=<?=$value->id?>">Modifier cette recette</a>
+<?php
 }
 
 ?>
+
+
 
 
 <form action="" method="POST">

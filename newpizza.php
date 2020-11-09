@@ -12,7 +12,6 @@ if(!empty($_POST)){
     
     else{        
         $req = $pdo->prepare(('INSERT INTO  pizza_list (pizza_name, pizza_inventor, ingredient) VALUES (?, ?, ?)'));
-        var_dump($req);
         $req->execute([$_POST['pizza_name'], $_SESSION['auth']->id, $_POST['ingredient']]);
     }
 }
