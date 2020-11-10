@@ -13,7 +13,7 @@ function logged_only(){
         session_start();
       }
     if(!isset($_SESSION['auth'])){
-      //  $_SESSION['flash']['danger'] = "Vous ne pouvez pas acceder à cette page";
+    $_SESSION['flash']['danger'] = "Vous ne pouvez pas acceder à cette page sans être connecté(e)";
         header('Location: login.php');
         exit();
     

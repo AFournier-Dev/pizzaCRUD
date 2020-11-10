@@ -24,7 +24,7 @@ if(!empty($_POST) && !empty($_POST['email'])){
     else{
         $_SESSION['flash']['danger'] = "Aucun compte ne correspond à cet email";
     }
-    debug($user->password);
+   // debug($user->password);
 
 }
 ?>
@@ -40,12 +40,13 @@ require_once 'header.php';
 <form action="" method="POST">
 <div class="form-group">
     <label for="">Email</label>
-    <input type="email" name="email" class="form-control" ><!-- required> -->
+    <input type="email" name="email" class="form-control" required>
 </div>
 
 <button type="submit" class="btn btn-primary">Se connecter</button>
 </form>
 
 
-<?php debug($_SESSION); ?>
+<?php // debug($_SESSION); 
+?>
 <?php require_once 'footer.php'; ?>

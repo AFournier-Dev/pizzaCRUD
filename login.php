@@ -9,7 +9,7 @@ if(isset($_SESSION['auth'])){
 if (!empty($_POST) && !empty($_POST['username']) && !empty($_POST['password'])) {
     require_once 'db.php';
     
-    // session_start();
+    //session_start();
     $req = $pdo->prepare('SELECT * FROM users WHERE (username = :username OR email = :username) AND confirmed_at IS NOT NULL');
     $req->execute(['username' => $_POST['username']]);
     $user = $req->fetch();
@@ -41,12 +41,12 @@ require_once 'header.php';
 <form action="" method="POST">
     <div class="form-group">
         <label for="">Pseudo ou email</label>
-        <input type="text" name="username" class="form-control"><!-- required> -->
+        <input type="text" name="username" class="form-control" required>
     </div>
 
     <div class="form-group">
         <label for="">Mot de passe <a href="forget.php">(Mot de passe oublié)</a></label>
-        <input type="text" name="password" class="form-control"><!-- required> ++++ type="password" -->
+        <input type="password" name="password" class="form-control" required>
     </div>
 
     <div class="form-group">
@@ -58,5 +58,5 @@ require_once 'header.php';
     <button type="submit" class="btn btn-primary">Se connecter</button>
 </form>
 
-<?php debug($_SESSION); ?>
+
 <?php require_once 'footer.php'; ?>

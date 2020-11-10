@@ -1,8 +1,11 @@
 <?php 
 require_once 'db.php';
-require_once 'header.php'; ?>
-
+require_once 'header.php'; 
+require_once 'functions.php'; 
+?>
 <?php
+logged_only();
+
 if(!empty($_POST)){
     $errors = array();
     
