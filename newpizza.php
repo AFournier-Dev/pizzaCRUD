@@ -30,7 +30,27 @@ if(!empty($_POST)){
     </div>
 
     <div class="form-group">
-        <label for="">Ingredients </label>
+        <label for="">Ingredients généraux </label>
+        <input type="text" name="ingredient" class="form-control" required>
+    </div>
+
+    <div class="form-group">
+        <label for="">Ingredients de la pâte </label>
+        <input type="checkbox" name="ingredient" class="form-control" required>
+    </div>
+
+    <div class="form-group">
+        <label for="">Façonnage de la pâte </label>
+        <input type="text" name="ingredient" class="form-control" required>
+    </div>
+
+    <div class="form-group">
+        <label for="">Ingredients de la garniture</label>
+        <input type="checkbox" name="ingredient" class="form-control" required>
+    </div>
+
+    <div class="form-group">
+        <label for="">Réalisation de la pizza</label>
         <input type="text" name="ingredient" class="form-control" required>
     </div>
 
