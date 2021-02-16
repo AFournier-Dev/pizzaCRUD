@@ -14,9 +14,9 @@ if (session_status() == PHP_SESSION_NONE) {
   <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
   <meta name="description" content="">
   <meta name="author" content="">
-  <link rel="icon" href="../../favicon.ico">
+  
   <link rel="canonical" href="https://getbootstrap.com/docs/3.4/examples/starter-template/">
-
+  <link rel="icon" href="assets/picture/favicon.png" />
   <title>Pizza par vous</title>
 
 
@@ -48,7 +48,7 @@ if (session_status() == PHP_SESSION_NONE) {
           <?php endif; ?>
           <li><a href="newpizza.php">Proposer une nouvelle recette</a></li>
           <li><a href="listpizza.php">Voir vos recettes</a></li>
-        <!--  <li><a href="adjustpizza.php">Modifier une de vos recette</a></li> -->
+          <!--  <li><a href="adjustpizza.php">Modifier une de vos recette</a></li> -->
           <li><a href="deletepizza.php">Supprimer une de vos recettes</a></li>
 
           <!--
